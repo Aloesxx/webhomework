@@ -66,6 +66,7 @@ body {
     background: rgba(116, 125, 140, 0.51);
     padding: 3em;
     margin: 0 auto;
+    border-radius:40px;
 }
 h4 {
     font-size: 16px;
@@ -89,12 +90,13 @@ select#w3_country, .w3_modal_body_grid input[type="text"], .w3_modal_body_grid i
     width: 55%;
     font-size: .9em;
     outline: none;
-    border: 1px solid #5ccecc;
+    border: 1px solid #2c3e50;
     padding: .9em .7em;
     letter-spacing: 1px;
     color: #fff;
-    background: rgba(53, 59, 72, 0.77);
+    background: rgba(189, 195, 199, 0.17);
     float: right;
+    border-radius:10px;
 }
 select#w3_country, #w3_country1 {
     width: 59.4%;
