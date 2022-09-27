@@ -1,0 +1,86 @@
+*{
+    margin: 0;
+    padding: 0;
+    /* 元素和子元素的文本将无法被选中 */
+    /* 
+    设置或检索是否允许用户选中文本
+    none：文本不能被选择
+    text：可以选择文本
+    all：当所有内容作为一个整体时可以被选择。如果双击或者在上下文上点击子元素，那么被选择的部分将是以该子元素向上回溯的最高祖先元素。
+    element：可以选择文本，但选择范围受元素边界的约束
+    */
+    user-select: none;
+    box-sizing: border-box;
+}
+html,body{
+    height: 100%;
+}
+body{
+    display: grid;
+    place-items: center;
+    background: #000000;
+}
+.calculator{
+    width: 400px;
+    background: #bdc3c7;
+    padding: 40px 30px;
+    border-radius: 10px;
+    box-shadow: -3px -3px 7px #ffffff73
+    ,2px 2px 5px rgba(94, 104, 121, 0.288);
+}
+form .result{
+    height: 60px;
+    width: 100%;
+    background: #dde1e7;
+    border-radius: 5px;
+    box-shadow: inset -3px -3px 7px #ffffff73,
+    inset 2px 2px 5px rgba(94, 104, 121, 0.288);
+    display: inline-block;
+}
+.result input{
+    width: 100%;
+    height: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    /*  */
+    padding: 0 20px;
+    /*  */
+    text-align: right;
+    color: #595959;
+    font-size: 30px;
+    font-weight: 500;
+    /* none——元素永远不会成为鼠标事件的target（目标）。 */
+    pointer-events: none;
+}
+form .buttons{
+    text-align: center;
+    padding: 30px 0 0 0;
+}
+.buttons input[type="button"]{
+    height: 56px;
+    width: 56px;
+    font-size: 23px;
+    margin: 4px;
+    border: none;
+    outline: none;
+    background: #dde1e7;
+    border-radius: 5px;
+    color: #000000;
+    box-shadow: -3px -3px 7px #ffffff73,
+    2px 2px 5px rgba(94, 104, 121, 0.288);
+}
+.buttons input[type="button"]:hover{
+    /*  */
+    transform: scale(0.9);
+    background-color: #dfe4ea;
+}
+.buttons input[type="button"]:active{
+    transform: scale(0.9);
+    color: #3498db;
+    box-shadow: inset -3px -3px 7px #ffffff73,
+    inset 2px 2px 5px rgba(94, 104, 121, 0.288);
+}
+/* #savevalue{
+    width: 331px;
+} */

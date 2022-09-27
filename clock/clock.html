@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- 设置标题 -->
+	<title>Web Clock</title>
+	<!-- 外联样式 -->
+	<link rel="stylesheet" type="text/css" href="css/clock.css">
+	<!-- 设置标签页上的图标 -->
+	<link rel="icon" href="src/clock.png">
+</head>
+<body>
+	<!-- 时钟盒子 -->
+	<div class="clock">
+		<!-- 定义刻度盘，将在js文件中创建li标签来生成刻度 -->
+		<ul id="dial"></ul>
+        <ul id="num"></ul>
+		<!-- 定义时针 -->
+		<div class="hour">
+			<div class="hr" id="hr"></div>
+		</div>
+		<!-- 定义分针 -->
+		<div class="minute">
+			<div class="min" id="min"></div>
+		</div>
+		<!-- 定义秒针 -->
+		<div class="second">
+			<div class="sec" id="sec"></div>
+		</div>
+	</div>
+	<!-- 显示当天时间信息的盒子 -->
+	<div id="daymsg">
+		<div id="hrmsg"></div>
+		<div id="minmsg"></div>
+		<div id="secmsg"></div>
+	</div>
+	<!-- 显示年月日的盒子 -->
+	<div id="fullmsg">
+		<div id="yearmsg"></div>
+		<div id="monthmsg"></div>
+		<div id="datemsg"></div>
+	</div>
+	<!-- 显示星期几的盒子 -->
+	<div id="weekmsg"></div>
+</body>
+<!-- 导入js文件 -->
+<script src="js/clock.js"></script>
+</html>

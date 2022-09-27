@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="css/calculator.css">
+    <link rel="icon" href="src/calculator.png">
+</head>
+<body>
+    <div class="calculator">
+        <form action="#" id="form">
+            <!-- 定义显示数字和暂存器的部分 -->
+            <div class="result">
+                <input type="text" id="disp" value="0" onkeypress="displayResult(event)">
+                <input type="text" id="temptext" value="0">
+            </div>
+            <!-- 定义计算器的按钮 -->
+            <div class="buttons">
+                <div>
+                    <input type="button" value="exp()" onclick="expFunc()">
+                    <input type="button" value="log()" onclick="logFunc()">
+                    <input type="button" value="√" onclick="sqrtFunc()">
+                    <input type="button" value="x^2" onclick="squareFunc()">
+                    <input type="button" id="savevalue" value="store" onclick="saveFunc()">
+                </div>
+                <div>
+                    <input type="button" value="sin" onclick="sinFunc()">
+                    <input type="button" value="cos" onclick="cosFunc()">
+                    <input type="button" value="tan" onclick="tanFunc()">
+                    <input type="button" value="%" onclick="percentage()">
+                    <input type="button" value="÷" onclick="oprt('/')"> 
+                </div>
+                <div>
+                    <input type="button" value="AC" onclick="val('ac')">
+                    <input type="button" value="7" onclick="val('7')">
+                    <input type="button" value="8" onclick="val('8')">
+                    <input type="button" value="9" onclick="val('9')">
+                    <input type="button" value="×" onclick="oprt('*')"> 
+                </div>
+                <div>
+                    <input type="button" value="CE" onclick="clearone()">
+                    <input type="button" value="4" onclick="val('4')">
+                    <input type="button" value="5" onclick="val('5')">
+                    <input type="button" value="6" onclick="val('6')">
+                    <input type="button" value="－" onclick="oprt('-')"> 
+                </div>
+                <div>
+                    <input type="button" value="π" onclick="piFunc()">
+                    <input type="button" value="1" onclick="val('1')">
+                    <input type="button" value="2" onclick="val('2')">
+                    <input type="button" value="3" onclick="val('3')">
+                    <input type="button" value="＋" onclick="oprt('+')"> 
+                </div>
+                <div>
+                    <input type="button" value="e" onclick="eFunc()">
+                    <input type="button" value="0" onclick="val('0')">
+                    <input type="button" value="＋/－" onclick="reverse()">
+                    <input type="button" value="." onclick="val('.')">
+                    <input type="button" value="＝" onclick="equal()"> 
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+<script src="js/calculator.js"></script>
+</html>
