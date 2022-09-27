@@ -1,9 +1,6 @@
 var json1 = {
     menu1: "1级菜单1",
     menu2: "1级菜单2",
-    menu3: "1级菜单3",
-    menu4: "1级菜单4",
-    menu5: "1级菜单5",
 };
 var json1_1 = {
     menu1_1: "2级菜单1.1",
@@ -16,10 +13,9 @@ var json1_1_1 = {
     menu1_1_1: "3级菜单1.1.1",
     menu1_1_2: "3级菜单1.1.2",
     menu1_1_3: "3级菜单1.1.3",
-    menu1_1_4: "3级菜单1.1.4",
 };
-
-var level_1_parent = document.getElementById("level_1_parent"); // 整个下拉菜单区的父节点
+// 整个下拉菜单区的父节点
+var level_1_parent = document.getElementById("level_1_parent");
 
 // 将一级菜单基础架构完成到ul标签
 var i = 1;
@@ -49,7 +45,7 @@ for (let key_1 in json1) {
     i = i + 1;
 }
 
-// 开始构建2级标签，找ul_level_two_i，为了方便，我只考虑给1级菜单1添加的ul添加li
+// 开始构建2级标签，找ul_level_two_i，只考虑给1级菜单1添加的ul添加li
 var ul_level_two_1 = document.getElementById("ul_level_two_1");
 i = 1;
 for (let key_2 in json1_1) {
@@ -61,8 +57,8 @@ for (let key_2 in json1_1) {
     i += 1;
 }
 
-// 开始构建3级标签，找li_level_two_i，为了方便，我只考虑给2级菜单1.4 li添加ul、li
-var li_level_two_4 = document.getElementById("li_level_two_4");
+// 开始构建3级标签，找li_level_two_i，只考虑给2级菜单1.2 li添加ul、li
+var li_level_two_4 = document.getElementById("li_level_two_2");
 // 先添加ul
 var ul_level_three_i = document.createElement("ul");
 ul_level_three_i.setAttribute("id", "ul_level_three_1");

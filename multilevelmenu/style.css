@@ -1,8 +1,9 @@
 .logo {
-    background-color: black;
+    background-color: #57606f;
     color: white;
     height: 45px;
     text-align: center;
+    border-radius:10px;
 }
 .func {
     border: 1px solid rgb(165, 167, 79);
