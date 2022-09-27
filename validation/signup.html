@@ -1,0 +1,75 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>登录验证</title>
+<link rel="stylesheet" href="./css/style.css" type="text/css" media="all" /> <!-- Style-CSS -->
+<link rel="stylesheet" href="./css/jquery-ui.css" />
+</head>
+<body>
+	<div class="center-container">
+		<div class="header-w3l">
+		    <h1>新用户注册系统</h1>
+		</div>
+        <div class="agileits-register">
+            <form action="/user/login" method="post" id="loginForm">
+                <div class="w3_modal_body_grid w3_modal_body_grid1">
+                    <span>用户名 :</span>
+                    <input id="uname" type="text" name="loginName" placeholder="UserName" pattern="^[A-Za-z0-9]+$" title="用户名由字母和数字组成" required=""/>
+                    <div class="clear"> </div>
+                </div>
+                <div class="w3_modal_body_grid">
+                    <span>密码 :</span>
+                    <input id="upwd1" type="password" name="password" placeholder="Password" pattern="^.*(?=.{6,})(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*? ]).*$" title="最少6位，包括至少1个大写字母，1个小写字母，1个数字，1个特殊字符" required=""/>
+                    <div class="clear"> </div>
+                </div>
+                <div class="w3_modal_body_grid w3_modal_body_grid1">
+                    <span>确认密码 :</span>
+                    <input id="upwd2" type="password" name="password2" placeholder="Repeat Password" pattern="^.*(?=.{6,})(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*? ]).*$" title="最少6位，包括至少1个大写字母，1个小写字母，1个数字，1个特殊字符" required=""/>
+                    <div class="clear"> </div>
+                </div>
+                <div class="w3_modal_body_grid w3_modal_body_grid1">
+                    <span>电子邮件 :</span>
+                    <input type="text" name="email" placeholder="Email" pattern="^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$" title="请输入正确的邮箱" required=""/>
+                    <div class="clear"> </div>
+                </div>
+                <div class="w3_modal_body_grid w3_modal_body_grid1">
+                    <span>手机号码 :</span>
+                    <input type="text" name="mobile" placeholder="Phone" pattern="^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\d{8}$" title="请输入正确的11位手机" required=""/>
+                    <div class="clear"> </div>
+                </div>
+                <div class="w3_modal_body_grid w3_modal_body_grid1">
+                    <span>身份证号 :</span>
+                    <input type="text" name="identityCode" placeholder="ID Card" pattern="(^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$)" title="请输入正确的18位身份证号" required=""/>
+                    <div class="clear"> </div>  
+                </div>
+                <br>
+                <span id="msg" class="w3_modal_body_grid" style="color: #dcdde1;font-size: 26px">鼠标悬停输入框可查看输入要求</span>
+                <br><br><br>
+                <div class="w3_modal_body_grid">
+                    <button id="loginBtn" type="submit" style="color:white;font-size: 22px;height: 50px;width: 200px;background-color: #40739e;border-radius: 30px">登&nbsp;&nbsp;&nbsp;&nbsp;录</button>
+                <div class="clear"></div>
+            </form>
+        </div>
+    </div>
+<script type="text/javascript" src="./js/jquery-2.1.4.min.js"></script>
+<script src="./js/jquery-ui.js"></script>
+<script>
+$("#upwd2").keyup(function (){
+    var upwd1 = $("#upwd1").val();
+    var upwd2 = $("#upwd2").val();
+    if (upwd1 != upwd2){
+        $("#msg").html("当前两次密码不一致，请注意！");
+    } else {
+        $("#msg").html("鼠标悬停输入框可查看输入要求,只判断用户名密码是否在数据库中");
+    }
+})
+</script>
+
+</body>
+</html>
