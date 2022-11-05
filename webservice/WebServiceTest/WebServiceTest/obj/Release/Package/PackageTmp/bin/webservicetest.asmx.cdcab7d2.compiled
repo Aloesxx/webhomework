@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="2" virtualPath="/WebServiceTest.asmx" hash="ffffffffb1ac842a" filehash="ffffc1531f7a54a5" flags="130000" assembly="WebServiceTest" type="WebServiceTest.WebServiceTest">
+    <filedeps>
+        <filedep name="/WebServiceTest.asmx" />
+    </filedeps>
+</preserve>

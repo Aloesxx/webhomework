@@ -1,0 +1,10 @@
+D:\everything\web开发技术\实验\WSTEST1\WSTEST1\bin\Debug\WSTEST1.exe.config
+D:\everything\web开发技术\实验\WSTEST1\WSTEST1\bin\Debug\WSTEST1.exe
+D:\everything\web开发技术\实验\WSTEST1\WSTEST1\bin\Debug\WSTEST1.pdb
+D:\everything\web开发技术\实验\WSTEST1\WSTEST1\obj\Debug\WSTEST1.csprojAssemblyReference.cache
+D:\everything\web开发技术\实验\WSTEST1\WSTEST1\obj\Debug\WSTEST1.Form1.resources
+D:\everything\web开发技术\实验\WSTEST1\WSTEST1\obj\Debug\WSTEST1.Properties.Resources.resources
+D:\everything\web开发技术\实验\WSTEST1\WSTEST1\obj\Debug\WSTEST1.csproj.GenerateResource.cache
+D:\everything\web开发技术\实验\WSTEST1\WSTEST1\obj\Debug\WSTEST1.csproj.CoreCompileInputs.cache
+D:\everything\web开发技术\实验\WSTEST1\WSTEST1\obj\Debug\WSTEST1.exe
+D:\everything\web开发技术\实验\WSTEST1\WSTEST1\obj\Debug\WSTEST1.pdb
