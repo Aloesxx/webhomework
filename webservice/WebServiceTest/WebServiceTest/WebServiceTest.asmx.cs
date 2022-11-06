@@ -24,7 +24,7 @@ namespace WebServiceTest
             return "Hello World";
         }
         [WebMethod(Description = "数字从小到大排序。输入示例：3,6,-1,8,100,-7")]
-        public string Sort(string str)
+        public string toBigSort(string str)
         {
             string[] strArr = Regex.Split(str, ",", RegexOptions.IgnoreCase);
             string temp="";
@@ -52,6 +52,41 @@ namespace WebServiceTest
             {
                 tmp += strArr[i];
                 if(i< strArr.Length - 1)
+                {
+                    tmp += ",";
+                }
+            }
+            return tmp;
+        }
+        [WebMethod(Description = "数字从大到小排序。输入示例同上")]
+        public string toSmallSort(string str)
+        {
+            string[] strArr = Regex.Split(str, ",", RegexOptions.IgnoreCase);
+            string temp = "";
+            bool sign;
+            for (int i = 0; i < strArr.Length - 1; i++)
+            {
+                for (int j = i + 1; j < strArr.Length; j++)
+                {
+                    int l = int.Parse(strArr[i]);
+                    int r = int.Parse(strArr[j]);
+                    if (l < r)
+                        sign = true;
+                    else
+                        sign = false;
+                    if (sign)
+                    {
+                        temp = strArr[i];
+                        strArr[i] = strArr[j];
+                        strArr[j] = temp;
+                    }
+                }
+            }
+            string tmp = "";
+            for (int i = 0; i < strArr.Length; i++)
+            {
+                tmp += strArr[i];
+                if (i < strArr.Length - 1)
                 {
                     tmp += ",";
                 }
