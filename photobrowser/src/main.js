@@ -20,6 +20,9 @@ Vue.use(ElementUI);
 import Api from './utils/index.js';
 Vue.prototype.$api = Api;
 
+import EXIF from 'exif-js'
+Vue.use(EXIF);
+
 new Vue({
   router,
   render: h => h(App)

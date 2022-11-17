@@ -11,9 +11,11 @@
         :on-preview="handlePreview"
         :on-change="handleChange"
         :before-remove="beforeRemove"
-        multiple
-        :show-file-list="false">
+        multiple>
         <el-button size="small" type="primary">点击上传</el-button>
+        <div style="display:none">
+            <img :src=img_base64 id="imgid" ref="img">
+        </div>
         <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
     </el-upload>
   </div>
@@ -24,31 +26,33 @@ import Vue from 'vue'
 import api from "../utils/api"
 import axios from 'axios'
 // npm install exif-js 安装获取图片exif信息的包
-import EXIF from 'exif-js'
+// import EXIF from 'exif-js'
+import EXIF from "../utils/exif"
 
 export default Vue.extend({
     name: "exif-js",
     data() {
         return{
             img_file: "",
+            img_src: "",
             img_base64: "",
             img_date: "",
             img_location: "",
-            address: ""
+            address: "",
+            fileList: "",
+            exifdata:""
         }
     },
     methods:{
         handleChange(file, fileList) {
+            console.log("handleChange")
             if (fileList.length > 1) {
                 fileList.shift()
             }
-            console.log(file)
-
             this.img_base64 = URL.createObjectURL(file.raw);
             this.uploadImgToBase64(file.raw).then((data) => {
                 this.img_base64 = data.result;
             });
-            console.log(this.img_base64)
         },
         handleAvatarSuccess(res, file) {
             console.log("handleAvatarSuccess")
@@ -84,21 +88,26 @@ export default Vue.extend({
         },
         handlePreview(file) {
             console.log("handlePreview")
-            console.log(file);
         },
         beforeRemove(file, fileList) {
             console.log("beforeRemove")
             return this.$confirm(`确定移除 ${ file.name }？`);
         },
         getImgLocation(){
+            console.log("getImgLocation")
             let _this = this
-            EXIF.getData(this.img_base64,function(){
+            let imgid = document.getElementById("imgid")
+            EXIF.getData(this.$refs.img,function(){
                 //图片包含的所有信息(例：拍照方向、相机设备型号、拍摄时间、ISO 感光度、GPS 地理位置等数据。)
+                console.log("EXIF.getData")
                 const imgAllInfo = EXIF.getAllTags(this);
                 console.log(imgAllInfo)
                 const shootTime = EXIF.getTag(this, 'DateTime')
                 const imgLon = EXIF.getTag(this, 'GPSLongitude')
                 const imgLat = EXIF.getTag(this, 'GPSLatitude')
+                console.log(shootTime)
+                console.log(imgLon)
+                console.log(imgLat)
                 if(imgLon && imgLat){
                     //计算出经纬度并保留6为小数
                     const lon = (imgLon[0] + imgLon[1]/60 + imgLon[2]/60/60).toFixed(6)
@@ -112,9 +121,12 @@ export default Vue.extend({
                 } else {
                     _this.address = '暂未获得该图片地址'
                 }
+                console.log(_this.address)
             })
         },
         test(){
+            this.getImgLocation()
+
             // const path = api.prdpath + "/test"
             // this.$api.get(path, null, response=>{
             //     if (response.status >= 200 && response.status < 300) {
@@ -127,11 +139,10 @@ export default Vue.extend({
             //     }
             // })
             // console.log(this.img_base64)
-            this.getImgLocation()
         }
     },
     mounted(){
-
+        
     }
 })
 </script>
