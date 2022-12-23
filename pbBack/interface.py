@@ -17,6 +17,12 @@ def test():
     return "halo"
 
 
+@app.route('/updateCSV', methods=['POST'])
+def updateCSV():
+    
+    return "halo"
+
+
 if __name__ == '__main__':
     # 这里host是你的后端地址，这里写0.0.0.0， 表示的是这个接口在任何服务器上都可以被访问的到，只需要前端访问该服务器地址就可以的，
     # 当然你也可以写死，如222.222.222.222， 那么前端只能访问222.222.222.222, port是该接口的端口号,

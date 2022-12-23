@@ -1,7 +1,8 @@
 <template>
   <div class="about">
     <h1>照片浏览器</h1>
-    <el-button type="primary" round @click="test()">测试按钮</el-button>
+    <el-button type="primary" round @click="test()">测试</el-button>
+    <el-button type="primary" round @click="updateCSV()">点击上传</el-button>
     <br><br><br>
     <el-upload class="upload-demo"
         action="#"
@@ -12,11 +13,11 @@
         :on-change="handleChange"
         :before-remove="beforeRemove"
         multiple>
-        <el-button size="small" type="primary">点击上传</el-button>
+        <el-button size="small" type="primary">选择图片</el-button>
         <div style="display:none">
-            <img :src=img_base64 id="imgid" ref="img">
+            <img :src=img_src id="imgid" ref="refimg">
         </div>
-        <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
+        <div slot="tip" class="el-upload__tip">只能选择jpg/png文件</div>
     </el-upload>
   </div>
 </template>
@@ -25,6 +26,7 @@
 import Vue from 'vue'
 import api from "../utils/api"
 import axios from 'axios'
+import {ref} from "vue"
 // npm install exif-js 安装获取图片exif信息的包
 // import EXIF from 'exif-js'
 import EXIF from "../utils/exif"
@@ -33,26 +35,29 @@ export default Vue.extend({
     name: "exif-js",
     data() {
         return{
-            img_file: "",
             img_src: "",
+            img_name: "",
             img_base64: "",
-            img_date: "",
-            img_location: "",
+            img_msg: [],
             address: "",
             fileList: "",
-            exifdata:""
         }
     },
     methods:{
         handleChange(file, fileList) {
             console.log("handleChange")
-            if (fileList.length > 1) {
-                fileList.shift()
-            }
+            // console.log(file)
+            // console.log(fileList)
+            // console.log(file.raw)
+            this.img_name = file.name
             this.img_base64 = URL.createObjectURL(file.raw);
             this.uploadImgToBase64(file.raw).then((data) => {
                 this.img_base64 = data.result;
             });
+            let picdic = {}
+            picdic["name"] = this.img_name
+            picdic["base64"] = this.img_base64
+            this.img_msg.push(picdic)
         },
         handleAvatarSuccess(res, file) {
             console.log("handleAvatarSuccess")
@@ -88,33 +93,43 @@ export default Vue.extend({
         },
         handlePreview(file) {
             console.log("handlePreview")
+            console.log(file.name);
+            console.log(this.img_msg);
+            for(let i=0;i<this.img_msg.length;i++){
+                if(file.name == this.img_msg[i].name){
+                    console.log("success find")
+                    this.img_src = this.img_msg[i].base64
+                    console.log(document.getElementById("imgid"))
+                    setTimeout(() => {
+                        this.getImgLocation()
+                    },1000)
+                }
+            }
         },
         beforeRemove(file, fileList) {
             console.log("beforeRemove")
             return this.$confirm(`确定移除 ${ file.name }？`);
         },
-        getImgLocation(){
+        getImgLocation(file){
             console.log("getImgLocation")
             let _this = this
-            let imgid = document.getElementById("imgid")
-            EXIF.getData(this.$refs.img,function(){
+            let imgtemp = this.$refs.refimg
+            EXIF.getData(imgtemp,function(){
                 //图片包含的所有信息(例：拍照方向、相机设备型号、拍摄时间、ISO 感光度、GPS 地理位置等数据。)
-                console.log("EXIF.getData")
                 const imgAllInfo = EXIF.getAllTags(this);
-                console.log(imgAllInfo)
                 const shootTime = EXIF.getTag(this, 'DateTime')
                 const imgLon = EXIF.getTag(this, 'GPSLongitude')
                 const imgLat = EXIF.getTag(this, 'GPSLatitude')
                 console.log(shootTime)
-                console.log(imgLon)
-                console.log(imgLat)
+                // console.log(imgLon)
+                // console.log(imgLat)
                 if(imgLon && imgLat){
                     //计算出经纬度并保留6为小数
                     const lon = (imgLon[0] + imgLon[1]/60 + imgLon[2]/60/60).toFixed(6)
                     const lat = (imgLat[0] + imgLat[1]/60 + imgLat[2]/60/60).toFixed(6)
                     //使用高德地图的逆地理编码，key申请类型为Web API服务
-                    const mapKey = 'ffe2ec0f997466eb8e28f71a8a6b15ed'
-                    //调用高得API
+                    const mapKey = '2091516000af8dacde13790ec768f934'
+                    //调用高德API
                     axios.get(`https://restapi.amap.com/v3/geocode/regeo?key=${mapKey}&location=${lon},${lat}`).then(res=>{
                         _this.address = res.data.regeocode.formatted_address
                     })
@@ -122,23 +137,23 @@ export default Vue.extend({
                     _this.address = '暂未获得该图片地址'
                 }
                 console.log(_this.address)
+                let reg = /.+?(省|市|自治区|自治州|县|区)/g;
+                console.log(_this.address.match(reg));
             })
         },
         test(){
             this.getImgLocation()
-
-            // const path = api.prdpath + "/test"
-            // this.$api.get(path, null, response=>{
-            //     if (response.status >= 200 && response.status < 300) {
-            //         let succesmsg = response.data
-            //         console.log(succesmsg)
-            //         // this.$message.success("请求成功")
-            //     } else {
-            //         // this.$message.error("请求实验结果列表失败")
-            //         console.log("error")
-            //     }
-            // })
-            // console.log(this.img_base64)
+        },
+        updateCSV(){
+            const path = api.prdpath + "/updateCSV"
+            this.$api.post(path, this.img_msg, response=>{
+                console.log(response.status)
+                if (response.status >= 200 && response.status < 300) {
+                    console.log(response.data)
+                } else {
+                    this.$message.error("更新CSV文件失败")
+                }
+            })
         }
     },
     mounted(){
