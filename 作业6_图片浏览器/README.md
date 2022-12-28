@@ -287,7 +287,7 @@ protected String authLoginUser(boolean isAdmin, String username, String pwd, Str
 
 页面运行效果如下：
 
-![1672235435507](image/README/1672235435507.png)
+![1672238874647](image/README/1672238874647.png)
 
 client端：
 
@@ -304,7 +304,7 @@ client端：
         </div>
         <div>
             <e-container>
-                <e-module-model-box title="全部照片">
+                <e-module-model-box>
                     <div class="floor_goods_wrap clearfix">
                         <el-row :gutter="20">
                             <el-col :md="6" v-for="r in zhaopianxinxilist1">
@@ -565,6 +565,7 @@ def updateImgData():
 
 页面运行效果如下：
 
+
 client端：
 
 ```html
@@ -654,52 +655,40 @@ server端：
 
 页面运行效果如下：
 
+![1672238562465](image/README/1672238562465.png)
+
+![1672238582471](image/README/1672238582471.png)
+
 client端：
 
 ```html
-<el-select v-model="query.selectProvince" placeholder="请选择图片省市">
-                    <el-option 
-                        v-for="(item, index) in query.ProvinceItems"
-                        :label="item.label"
-                        :value="item.value"
-                        :key="index"></el-option>
-                </el-select>
-                <el-select v-model="query.selectCity" placeholder="请选择图片城市">
-                    <el-option 
-                        v-for="(item, index) in query.CityItems"
-                        :label="item.label"
-                        :value="item.value"
-                        :key="index"></el-option>
-                </el-select>
-                <el-select v-model="query.selectRegion" placeholder="请选择图片地区">
-                    <el-option 
-                        v-for="(item, index) in query.RegionItems"
-                        :label="item.label"
-                        :value="item.value"
-                        :key="index"></el-option>
-                </el-select>
-		<el-select v-model="query.selectTime" placeholder="请选择图片时间">
-                    <el-option 
-                        v-for="(item, index) in query.TimeItems"
-                        :label="item.label"
-                        :value="item.value"
-                        :key="index"></el-option>
-                </el-select>
+<el-cascader 
+                    class="cascader-style"
+                    v-model="result.value"
+                    :options="result.options"
+                    @change="handleChange">
+                </el-cascader>
+                <el-cascader 
+                    class="cascader-style"
+                    v-model="imgtime.value"
+                    :options="imgtime.options"
+                    @change="handleChange">
+                </el-cascader>
 ```
 
 ```javascript
 initImgList(){
-            const path = api.prdpath + "/getAllImg"
+            const path = api.prdpath + "/getImgList"
             this.$api.get(path, null, response=>{
                 if (response.status >= 200 && response.status < 300) {
-                    this.query.location = response.data.location
-                    this.query.time = response.data.time
+                    this.result.options = response.data.location
+                    this.imgtime.options = response.data.time
                     this.$message.success("请求成功")
                 } else {
-                    this.$message.error("请求图片信息失败")
+                    this.$message.error("请求失败")
                 }
             })
-        }
+        },
 ```
 
 server端：
@@ -790,6 +779,7 @@ def getAllImg():
 ```
 
 ### 照片管理功能
+
 
 页面运行效果如下：
 
