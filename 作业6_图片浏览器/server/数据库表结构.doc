@@ -1,0 +1,534 @@
+
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+      xmlns:w="urn:schemas-microsoft-com:office:word"
+      xmlns="http://www.w3.org/TR/REC-html40">
+<!--<html>-->
+<h3>&nbsp;
+    创建外键索引语句:
+</h3>
+
+<pre style="padding: 20px; display: block; background: #d5d5d5;font-size: 12px">
+;
+ALTER TABLE zhaopianxinxi ADD FOREIGN KEY (fenlei) REFERENCES zhaopianfenlei(id) ON UPDATE CASCADE ON DELETE CASCADE</pre>
+<p>&nbsp;</p>
+<table width=600 cellpadding="6" cellspacing="1" style="margin: 0 auto">
+    <tbody>
+    <tr>
+        <td colspan="6" bgcolor="#DEDEDE">
+            【管理员】模块,表名：<span style="color: #990000">admins</span>
+        </td>
+    </tr>
+    <tr>
+        <td>序号</td>
+        <td>字段名</td>
+        <td>类型</td>
+        <td>长度</td>
+        <td>主键</td>
+        <td>描述</td>
+    </tr>
+        <tr>
+        <td>1</td>
+        <td>id</td>
+        <td>int</td>
+        <td></td>
+        <td>是</td>
+        <td> (主键)</td>
+    </tr>
+        <tr>
+        <td>2</td>
+        <td>username</td>
+        <td>varchar</td>
+        <td>50</td>
+        <td></td>
+        <td>帐号 </td>
+    </tr>
+        <tr>
+        <td>3</td>
+        <td>pwd</td>
+        <td>varchar</td>
+        <td>50</td>
+        <td></td>
+        <td>密码 </td>
+    </tr>
+    
+                    </tbody>
+</table>
+<p>&nbsp;</p>
+<table width=600 cellpadding="6" cellspacing="1" style="margin: 0 auto">
+    <tbody>
+    <tr>
+        <td colspan="6" bgcolor="#DEDEDE">
+            【用户】模块,表名：<span style="color: #990000">yonghu</span>
+        </td>
+    </tr>
+    <tr>
+        <td>序号</td>
+        <td>字段名</td>
+        <td>类型</td>
+        <td>长度</td>
+        <td>主键</td>
+        <td>描述</td>
+    </tr>
+        <tr>
+        <td>1</td>
+        <td>id</td>
+        <td>int</td>
+        <td></td>
+        <td>是</td>
+        <td> (主键)</td>
+    </tr>
+        <tr>
+        <td>2</td>
+        <td>yonghuming</td>
+        <td>varchar</td>
+        <td>50</td>
+        <td></td>
+        <td>用户名 </td>
+    </tr>
+        <tr>
+        <td>3</td>
+        <td>mima</td>
+        <td>varchar</td>
+        <td>50</td>
+        <td></td>
+        <td>密码 </td>
+    </tr>
+        <tr>
+        <td>4</td>
+        <td>xingming</td>
+        <td>varchar</td>
+        <td>50</td>
+        <td></td>
+        <td>姓名 </td>
+    </tr>
+        <tr>
+        <td>5</td>
+        <td>xingbie</td>
+        <td>varchar</td>
+        <td>10</td>
+        <td></td>
+        <td>性别 </td>
+    </tr>
+        <tr>
+        <td>6</td>
+        <td>shouji</td>
+        <td>varchar</td>
+        <td>50</td>
+        <td></td>
+        <td>手机 </td>
+    </tr>
+        <tr>
+        <td>7</td>
+        <td>youxiang</td>
+        <td>varchar</td>
+        <td>50</td>
+        <td></td>
+        <td>邮箱 </td>
+    </tr>
+        <tr>
+        <td>8</td>
+        <td>touxiang</td>
+        <td>varchar</td>
+        <td>255</td>
+        <td></td>
+        <td>头像 </td>
+    </tr>
+    
+                    </tbody>
+</table>
+<p>&nbsp;</p>
+<table width=600 cellpadding="6" cellspacing="1" style="margin: 0 auto">
+    <tbody>
+    <tr>
+        <td colspan="6" bgcolor="#DEDEDE">
+            【轮播图】模块,表名：<span style="color: #990000">lunbotu</span>
+        </td>
+    </tr>
+    <tr>
+        <td>序号</td>
+        <td>字段名</td>
+        <td>类型</td>
+        <td>长度</td>
+        <td>主键</td>
+        <td>描述</td>
+    </tr>
+        <tr>
+        <td>1</td>
+        <td>id</td>
+        <td>int</td>
+        <td></td>
+        <td>是</td>
+        <td> (主键)</td>
+    </tr>
+        <tr>
+        <td>2</td>
+        <td>title</td>
+        <td>varchar</td>
+        <td>50</td>
+        <td></td>
+        <td>标题 </td>
+    </tr>
+        <tr>
+        <td>3</td>
+        <td>image</td>
+        <td>varchar</td>
+        <td>255</td>
+        <td></td>
+        <td>图片 </td>
+    </tr>
+        <tr>
+        <td>4</td>
+        <td>url</td>
+        <td>varchar</td>
+        <td>255</td>
+        <td></td>
+        <td>连接地址 </td>
+    </tr>
+    
+                    </tbody>
+</table>
+<p>&nbsp;</p>
+<table width=600 cellpadding="6" cellspacing="1" style="margin: 0 auto">
+    <tbody>
+    <tr>
+        <td colspan="6" bgcolor="#DEDEDE">
+            【照片分类】模块,表名：<span style="color: #990000">zhaopianfenlei</span>
+        </td>
+    </tr>
+    <tr>
+        <td>序号</td>
+        <td>字段名</td>
+        <td>类型</td>
+        <td>长度</td>
+        <td>主键</td>
+        <td>描述</td>
+    </tr>
+        <tr>
+        <td>1</td>
+        <td>id</td>
+        <td>int</td>
+        <td></td>
+        <td>是</td>
+        <td> (主键)</td>
+    </tr>
+        <tr>
+        <td>2</td>
+        <td>fenleimingcheng</td>
+        <td>varchar</td>
+        <td>255</td>
+        <td></td>
+        <td>分类名称 </td>
+    </tr>
+    
+                    </tbody>
+</table>
+<p>&nbsp;</p>
+<table width=600 cellpadding="6" cellspacing="1" style="margin: 0 auto">
+    <tbody>
+    <tr>
+        <td colspan="6" bgcolor="#DEDEDE">
+            【照片信息】模块,表名：<span style="color: #990000">zhaopianxinxi</span>
+        </td>
+    </tr>
+    <tr>
+        <td>序号</td>
+        <td>字段名</td>
+        <td>类型</td>
+        <td>长度</td>
+        <td>主键</td>
+        <td>描述</td>
+    </tr>
+        <tr>
+        <td>1</td>
+        <td>id</td>
+        <td>int</td>
+        <td></td>
+        <td>是</td>
+        <td> (主键)</td>
+    </tr>
+        <tr>
+        <td>2</td>
+        <td>zhaopianbianhao</td>
+        <td>varchar</td>
+        <td>50</td>
+        <td></td>
+        <td>照片编号 </td>
+    </tr>
+        <tr>
+        <td>3</td>
+        <td>zhaopianmingcheng</td>
+        <td>varchar</td>
+        <td>255</td>
+        <td></td>
+        <td>照片名称 </td>
+    </tr>
+        <tr>
+        <td>4</td>
+        <td>fenlei</td>
+        <td>int</td>
+        <td></td>
+        <td></td>
+        <td>分类 </td>
+    </tr>
+        <tr>
+        <td>5</td>
+        <td>zhaopian</td>
+        <td>text</td>
+        <td></td>
+        <td></td>
+        <td>照片 </td>
+    </tr>
+        <tr>
+        <td>6</td>
+        <td>paisheshijian</td>
+        <td>varchar</td>
+        <td>25</td>
+        <td></td>
+        <td>拍摄时间 </td>
+    </tr>
+        <tr>
+        <td>7</td>
+        <td>paishedidian</td>
+        <td>varchar</td>
+        <td>50</td>
+        <td></td>
+        <td>拍摄地点 </td>
+    </tr>
+        <tr>
+        <td>8</td>
+        <td>zhaopianjianjie</td>
+        <td>text</td>
+        <td></td>
+        <td></td>
+        <td>照片简介 </td>
+    </tr>
+        <tr>
+        <td>9</td>
+        <td>faburen</td>
+        <td>varchar</td>
+        <td>50</td>
+        <td></td>
+        <td>发布人 </td>
+    </tr>
+    
+                                <tr>
+            <td colspan="6">
+                设置索引，
+                字段：fenlei ，
+                关联表【zhaopianfenlei】中的id 字段            </td>
+        </tr>
+                </tbody>
+</table>
+<p>&nbsp;</p>
+<table width=600 cellpadding="6" cellspacing="1" style="margin: 0 auto">
+    <tbody>
+    <tr>
+        <td colspan="6" bgcolor="#DEDEDE">
+            【评论】模块,表名：<span style="color: #990000">pinglun</span>
+        </td>
+    </tr>
+    <tr>
+        <td>序号</td>
+        <td>字段名</td>
+        <td>类型</td>
+        <td>长度</td>
+        <td>主键</td>
+        <td>描述</td>
+    </tr>
+        <tr>
+        <td>1</td>
+        <td>id</td>
+        <td>int</td>
+        <td></td>
+        <td>是</td>
+        <td> (主键)</td>
+    </tr>
+        <tr>
+        <td>2</td>
+        <td>biao</td>
+        <td>varchar</td>
+        <td>50</td>
+        <td></td>
+        <td>表 </td>
+    </tr>
+        <tr>
+        <td>3</td>
+        <td>biaoid</td>
+        <td>int</td>
+        <td></td>
+        <td></td>
+        <td>表id </td>
+    </tr>
+        <tr>
+        <td>4</td>
+        <td>biaoti</td>
+        <td>varchar</td>
+        <td>255</td>
+        <td></td>
+        <td>标题 </td>
+    </tr>
+        <tr>
+        <td>5</td>
+        <td>pinglunneirong</td>
+        <td>text</td>
+        <td></td>
+        <td></td>
+        <td>评论内容 </td>
+    </tr>
+        <tr>
+        <td>6</td>
+        <td>pinglunren</td>
+        <td>varchar</td>
+        <td>50</td>
+        <td></td>
+        <td>评论人 </td>
+    </tr>
+        <tr>
+        <td>7</td>
+        <td>addtime</td>
+        <td>timestamp </td>
+        <td></td>
+        <td></td>
+        <td>评论时间 </td>
+    </tr>
+    
+                    </tbody>
+</table>
+<p>&nbsp;</p>
+<table width=600 cellpadding="6" cellspacing="1" style="margin: 0 auto">
+    <tbody>
+    <tr>
+        <td colspan="6" bgcolor="#DEDEDE">
+            【收藏】模块,表名：<span style="color: #990000">shoucang</span>
+        </td>
+    </tr>
+    <tr>
+        <td>序号</td>
+        <td>字段名</td>
+        <td>类型</td>
+        <td>长度</td>
+        <td>主键</td>
+        <td>描述</td>
+    </tr>
+        <tr>
+        <td>1</td>
+        <td>id</td>
+        <td>int</td>
+        <td></td>
+        <td>是</td>
+        <td> (主键)</td>
+    </tr>
+        <tr>
+        <td>2</td>
+        <td>username</td>
+        <td>varchar</td>
+        <td>50</td>
+        <td></td>
+        <td>用户 </td>
+    </tr>
+        <tr>
+        <td>3</td>
+        <td>xwid</td>
+        <td>int</td>
+        <td></td>
+        <td></td>
+        <td>关联表id </td>
+    </tr>
+        <tr>
+        <td>4</td>
+        <td>biao</td>
+        <td>varchar</td>
+        <td>50</td>
+        <td></td>
+        <td>关联表 </td>
+    </tr>
+        <tr>
+        <td>5</td>
+        <td>biaoti</td>
+        <td>varchar</td>
+        <td>255</td>
+        <td></td>
+        <td>标题 </td>
+    </tr>
+        <tr>
+        <td>6</td>
+        <td>addtime</td>
+        <td>timestamp </td>
+        <td></td>
+        <td></td>
+        <td>收藏时间 </td>
+    </tr>
+    
+                    </tbody>
+</table>
+<p>&nbsp;</p>
+<table width=600 cellpadding="6" cellspacing="1" style="margin: 0 auto">
+    <tbody>
+    <tr>
+        <td colspan="6" bgcolor="#DEDEDE">
+            【点赞】模块,表名：<span style="color: #990000">dianzan</span>
+        </td>
+    </tr>
+    <tr>
+        <td>序号</td>
+        <td>字段名</td>
+        <td>类型</td>
+        <td>长度</td>
+        <td>主键</td>
+        <td>描述</td>
+    </tr>
+        <tr>
+        <td>1</td>
+        <td>id</td>
+        <td>int</td>
+        <td></td>
+        <td>是</td>
+        <td> (主键)</td>
+    </tr>
+        <tr>
+        <td>2</td>
+        <td>username</td>
+        <td>varchar</td>
+        <td>50</td>
+        <td></td>
+        <td>用户 </td>
+    </tr>
+        <tr>
+        <td>3</td>
+        <td>biaoid</td>
+        <td>int</td>
+        <td></td>
+        <td></td>
+        <td>关联表id </td>
+    </tr>
+        <tr>
+        <td>4</td>
+        <td>biao</td>
+        <td>varchar</td>
+        <td>50</td>
+        <td></td>
+        <td>关联表 </td>
+    </tr>
+        <tr>
+        <td>5</td>
+        <td>biaoti</td>
+        <td>varchar</td>
+        <td>255</td>
+        <td></td>
+        <td>标题 </td>
+    </tr>
+        <tr>
+        <td>6</td>
+        <td>addtime</td>
+        <td>timestamp </td>
+        <td></td>
+        <td></td>
+        <td>点赞时间 </td>
+    </tr>
+    
+                    </tbody>
+</table>
+<p>&nbsp;</p>
+
+
+</html>

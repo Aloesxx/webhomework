@@ -1,0 +1,88 @@
+# 作业3_正则表达式验证
+
+运行结果如下图所示：
+
+![1672219875367](image/README/1672219875367.png)
+
+![1672219900266](image/README/1672219900266.png)
+
+## HTML
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>登录验证</title>
+    <link rel="stylesheet" href="./css/style.css" type="text/css" media="all" /> <!-- Style-CSS -->
+    <link rel="stylesheet" href="./css/jquery-ui.css" />
+</head>
+<body>
+	<div class="center-container">
+		<div class="header-w3l">
+		    <h1>新用户注册系统</h1>
+		</div>
+        <div class="agileits-register">
+            <form>
+                <div class="w3_modal_body_grid w3_modal_body_grid1">
+                    <span>用户名 :</span>
+                    <input id="uname" type="text" name="loginName" placeholder="UserName" pattern="^[A-Za-z0-9]+$" title="用户名由字母和数字组成" required=""/>
+                    <div class="clear"> </div>
+                </div>
+                <div class="w3_modal_body_grid">
+                    <span>密码 :</span>
+                    <input id="upwd1" type="password" name="password" placeholder="Password" pattern="^.*(?=.{6,})(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*? ]).*$" title="最少6位，包括至少1个大写字母，1个小写字母，1个数字，1个特殊字符" required=""/>
+                    <div class="clear"> </div>
+                </div>
+                <div class="w3_modal_body_grid w3_modal_body_grid1">
+                    <span>确认密码 :</span>
+                    <input id="upwd2" type="password" name="password2" placeholder="Repeat Password" pattern="^.*(?=.{6,})(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*? ]).*$" title="最少6位，包括至少1个大写字母，1个小写字母，1个数字，1个特殊字符" required=""/>
+                    <div class="clear"> </div>
+                </div>
+                <div class="w3_modal_body_grid w3_modal_body_grid1">
+                    <span>电子邮件 :</span>
+                    <input type="text" name="email" placeholder="Email" pattern="^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$" title="请输入正确的邮箱" required=""/>
+                    <div class="clear"> </div>
+                </div>
+                <div class="w3_modal_body_grid w3_modal_body_grid1">
+                    <span>手机号码 :</span>
+                    <input type="text" name="mobile" placeholder="Phone" pattern="^1(3[0-9]|4[01456879]|5[0-35-9]|6[2567]|7[0-8]|8[0-9]|9[0-35-9])\d{8}$" title="请输入正确的11位手机" required=""/>
+                    <div class="clear"> </div>
+                </div>
+                <div class="w3_modal_body_grid w3_modal_body_grid1">
+                    <span>身份证号 :</span>
+                    <input type="text" name="identityCode" placeholder="ID Card" pattern="(^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$)" title="请输入正确的18位身份证号" required=""/>
+                    <div class="clear"> </div>  
+                </div>
+                <br>
+                <span id="msg" class="w3_modal_body_grid" style="color: #dcdde1;font-size: 15px">注：鼠标悬停于输入框上可显示输入要求</span>
+                <br><br>
+                <div class="w3_modal_body_grid">
+                    <button id="loginBtn" type="submit" style="color:white;font-size: 22px;height: 50px;width: 200px;background-color: #808e9b;border-radius: 30px">登    录</button>
+                <div class="clear"></div>
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript" src="./js/jquery-2.1.4.min.js"></script>
+    <script src="./js/jquery-ui.js"></script>
+    <script>
+        $("#upwd2").keyup(function (){
+            var upwd1 = $("#upwd1").val();
+            var upwd2 = $("#upwd2").val();
+            if (upwd1 != upwd2){
+                $("#msg").html("当前输入两次密码不一致！");
+            } else {
+                $("#msg").html("密码验证正确");
+            }
+        })
+    </script>
+</body>
+</html>
+```
+
+## CSS
+
+详见：作业3_正则表达式验证\css
+
+## JavaScript
+
+详见：作业3_正则表达式验证\js

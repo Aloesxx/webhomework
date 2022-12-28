@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.spring.dao.ZhaopianxinxiMapper">
+    <resultMap id="BaseResultMap" type="com.spring.entity.Zhaopianxinxi">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+                            <result column="zhaopianbianhao" property="zhaopianbianhao" jdbcType="VARCHAR"/>
+                                    <result column="zhaopianmingcheng" property="zhaopianmingcheng" jdbcType="VARCHAR"/>
+                                    <result column="fenlei" property="fenlei" jdbcType="VARCHAR"/>
+                                    <result column="zhaopian" property="zhaopian" jdbcType="VARCHAR"/>
+                                    <result column="paisheshijian" property="paisheshijian" jdbcType="VARCHAR"/>
+                                    <result column="paishedidian" property="paishedidian" jdbcType="VARCHAR"/>
+                                    <result column="zhaopianjianjie" property="zhaopianjianjie" jdbcType="VARCHAR"/>
+                                    <result column="faburen" property="faburen" jdbcType="VARCHAR"/>
+                                
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, zhaopianbianhao, zhaopianmingcheng, fenlei, zhaopian, paisheshijian, paishedidian, zhaopianjianjie, faburen    </sql>
+    </mapper>
