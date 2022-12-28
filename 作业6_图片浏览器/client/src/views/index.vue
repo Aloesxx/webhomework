@@ -63,6 +63,7 @@
                     .then((res) => {
                         this.loading = false;
                         if (res.code == api.code.OK) {
+                            console.log(res.data)
                             extend(this, res.data);
                         } else {
                             this.$message.error(res.msg);
