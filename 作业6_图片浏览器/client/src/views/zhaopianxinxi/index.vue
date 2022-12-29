@@ -17,6 +17,21 @@
                                     ></el-select>
                                 </el-form-item>
                                 <el-form-item>
+                                    <el-cascader 
+                                        class="cascader-style"
+                                        v-model="result.value"
+                                        :options="result.options"
+                                        @change="handleChange">
+                                    </el-cascader>
+                                    <el-cascader 
+                                        class="cascader-style"
+                                        v-model="imgtime.value"
+                                        :options="imgtime.options"
+                                        @change="handleChange">
+                                    </el-cascader>
+                                </el-form-item>
+                                <el-form-item>
+                                    <el-button type="primary" @click="getImgMsg" icon="el-icon-search">获得列表</el-button>
                                     <el-button type="primary" @click="searchSubmit" icon="el-icon-search">查询</el-button>
                                 </el-form-item>
                             </el-form>
@@ -72,6 +87,14 @@
 
                     faburen: "",
                 },
+                result:{
+                    value: [],
+                    options: []
+                },
+                imgtime:{
+                    value: [],
+                    options: []
+                },
                 page: 1, // 当前页
                 pagesize: 12, // 页大小
                 totalCount: 0, // 总行数
@@ -85,6 +108,10 @@
         methods: {
             searchSubmit() {
                 this.loadList(1);
+            },
+            getImgMsg(){
+                this.result.options = [{'value': '重庆市', 'label': '重庆市', 'children': [{'value': '市辖区', 'label': '市辖区', 'children': [{'value': '渝北区', 'label': '渝北区'}, {'value': '沙坪坝区', 'label': '沙坪坝区'}]}]}, {'value': '山东省', 'label': '山东省', 'children': [{'value': '潍坊市', 'label': '潍坊市', 'children': [{'value': '诸城市', 'label': '诸城市'}]}]}, {'value': '甘肃省', 'label': '甘肃省', 'children': [{'value': '庆阳市', 'label': '庆阳市', 'children': [{'value': '环县', 'label': '环县'}, {'value': '庆城县', 'label': '庆城县'}]}]}, {'value': '河南省', 'label': '河南省', 'children': [{'value': '开封市', 'label': '开封市', 'children': [{'value': '龙亭区', 'label': '龙亭区'}]}]}, {'value': '江西省', 'label': '江西省', 'children': [{'value': '上饶市', 'label': '上饶市', 'children': [{'value': '广丰区', 'label': '广丰区'}]}]}]
+                this.imgtime.options = [{'value': '2019:01:20', 'label': '2019:01:20'}, {'value': '2019:05:01', 'label': '2019:05:01'}, {'value': '2019:07:31', 'label': '2019:07:31'}, {'value': '2019:08:06', 'label': '2019:08:06'}, {'value': '2019:08:09', 'label': '2019:08:09'}, {'value': '2019:08:12', 'label': '2019:08:12'}, {'value': '2019:08:13', 'label': '2019:08:13'}, {'value': '2019:08:17', 'label': '2019:08:17'}, {'value': '2019:08:24', 'label': '2019:08:24'}, {'value': '2019:08:27', 'label': '2019:08:27'}]
             },
             loadList(page) {
                 // 防止重新点加载列表

@@ -12,10 +12,10 @@ server后端：基于Java开发
 
 图片浏览器系统主要实现了以下几个功能：
 
-1. 用户与管理员信息注册与登录
+1. 用户信息注册与登录
 2. 浏览所有图片
-3. 根据图片分类进行查看
-4. 上传图片
+3. 根据图片分类或筛选地理位置和时间条件进行查看
+4. 上传图片、查看图片信息
 5. 对图片进行管理
 
 ## 代码与效果展示
@@ -128,7 +128,7 @@ server端：
 
 页面运行效果如下：
 
-![1672230082780](image/README/1672230082780.png)
+![1672283937852](image/README/1672283937852.png)
 
 client端：
 
@@ -287,7 +287,7 @@ protected String authLoginUser(boolean isAdmin, String username, String pwd, Str
 
 页面运行效果如下：
 
-![1672238874647](image/README/1672238874647.png)
+![1672289358213](image/README/1672289358213.png)
 
 client端：
 
@@ -378,6 +378,8 @@ server端：
 页面运行效果如下：
 
 ![1672234450382](image/README/1672234450382.png)
+
+![1672296428989](image/README/1672296428989.png)
 
 ![1672234487124](image/README/1672234487124.png)
 
@@ -561,103 +563,11 @@ def updateImgData():
     return "上传图片成功"
 ```
 
-### 照片详情功能
-
-页面运行效果如下：
-
-
-client端：
-
-```html
-<div class="zhaopianxinxi-detail" v-loading="loading" ref="print">
-        <el-page-header @back="goBack" content="详情页面"></el-page-header>
-        <div class="admin-detail">
-            <div class="detail detail-text">
-                <div class="detail-title">照片编号：</div>
-                <div class="detail-content">{{ map.zhaopianbianhao }}</div>
-            </div>
-            <div class="detail detail-text">
-                <div class="detail-title">拍摄地点：</div>
-                <div class="detail-content">{{ map.paishedidian }}</div>
-            </div>
-            <div class="detail detail-longtext">
-                <div class="detail-title">照片名称：</div>
-                <div class="detail-content">{{ map.zhaopianmingcheng }}</div>
-            </div>
-            <div class="detail detail-select">
-                <div class="detail-title">分类：</div>
-                <div class="detail-content">
-                    <e-select-view module="zhaopianfenlei" :value="map.fenlei" select="id" show="fenleimingcheng"></e-select-view>
-                </div>
-            </div>
-            <div class="detail detail-datetime">
-                <div class="detail-title">拍摄时间：</div>
-                <div class="detail-content">{{ map.paisheshijian }}</div>
-            </div>
-            <div class="detail detail-textarea">
-                <div class="detail-title">照片简介：</div>
-                <div class="detail-content">{{ map.zhaopianjianjie }}</div>
-            </div>
-            <div class="detail detail-textuser">
-                <div class="detail-title">发布人：</div>
-                <div class="detail-content">{{ map.faburen }}</div>
-            </div>
-            <div class="detail detail-images">
-                <div class="detail-title">照片：</div>
-                <div class="detail-content">
-                    <e-images :src="map.zhaopian" type="detail"></e-images>
-                </div>
-            </div>
-        </div>
-        <div class="mt10">
-            <el-button type="default" class="hidePrint" @click="$router.go(-1)"> 返回 </el-button>
-            <el-button type="success" class="hidePrint" @click="$print"> 打印本页 </el-button>
-        </div>
-    </div>
-```
-
-```javascript
-loadDetail() {
-                if (this.loading) return;
-                this.loading = true;
-                this.$get(api.zhaopianxinxi.detail, {
-                    id: this.id,
-                })
-                    .then((res) => {
-                        this.loading = false;
-                        if (res.code == api.code.OK) {
-                            extend(this, res.data);
-                        } else {
-                            this.$message.error(res.msg);
-                        }
-                    })
-                    .catch((err) => {
-                        this.loading = false;
-                        this.$message.error(err.message);
-                    });
-            }
-```
-
-server端：
-
-```java
-@RequestMapping("/zhaopianxinxi_detail")
-    public String detail() {
-        _var = new LinkedHashMap(); // 重置数据
-        int id = Request.getInt("id");
-        Zhaopianxinxi map = service.find(id); // 根据前台url 参数中的id获取行数据
-        assign("map", map); // 把数据写到前台
-        return json(); // 将数据写给前端
-    }
-```
-
 ### 照片筛选功能
 
 页面运行效果如下：
 
-![1672238562465](image/README/1672238562465.png)
-
-![1672238582471](image/README/1672238582471.png)
+![1672290749849](image/README/1672290749849.png)
 
 client端：
 
@@ -778,10 +688,102 @@ def getAllImg():
     return img_Msg
 ```
 
-### 照片管理功能
+### 照片详情功能
 
+![1672291668252](image/README/1672291668252.png)
 
 页面运行效果如下：
+
+client端：
+
+```html
+<div class="zhaopianxinxi-detail" v-loading="loading" ref="print">
+        <el-page-header @back="goBack" content="详情页面"></el-page-header>
+        <div class="admin-detail">
+            <div class="detail detail-text">
+                <div class="detail-title">照片编号：</div>
+                <div class="detail-content">{{ map.zhaopianbianhao }}</div>
+            </div>
+            <div class="detail detail-text">
+                <div class="detail-title">拍摄地点：</div>
+                <div class="detail-content">{{ map.paishedidian }}</div>
+            </div>
+            <div class="detail detail-longtext">
+                <div class="detail-title">照片名称：</div>
+                <div class="detail-content">{{ map.zhaopianmingcheng }}</div>
+            </div>
+            <div class="detail detail-select">
+                <div class="detail-title">分类：</div>
+                <div class="detail-content">
+                    <e-select-view module="zhaopianfenlei" :value="map.fenlei" select="id" show="fenleimingcheng"></e-select-view>
+                </div>
+            </div>
+            <div class="detail detail-datetime">
+                <div class="detail-title">拍摄时间：</div>
+                <div class="detail-content">{{ map.paisheshijian }}</div>
+            </div>
+            <div class="detail detail-textarea">
+                <div class="detail-title">照片简介：</div>
+                <div class="detail-content">{{ map.zhaopianjianjie }}</div>
+            </div>
+            <div class="detail detail-textuser">
+                <div class="detail-title">发布人：</div>
+                <div class="detail-content">{{ map.faburen }}</div>
+            </div>
+            <div class="detail detail-images">
+                <div class="detail-title">照片：</div>
+                <div class="detail-content">
+                    <e-images :src="map.zhaopian" type="detail"></e-images>
+                </div>
+            </div>
+        </div>
+        <div class="mt10">
+            <el-button type="default" class="hidePrint" @click="$router.go(-1)"> 返回 </el-button>
+            <el-button type="success" class="hidePrint" @click="$print"> 打印本页 </el-button>
+        </div>
+    </div>
+```
+
+```javascript
+loadDetail() {
+                if (this.loading) return;
+                this.loading = true;
+                this.$get(api.zhaopianxinxi.detail, {
+                    id: this.id,
+                })
+                    .then((res) => {
+                        this.loading = false;
+                        if (res.code == api.code.OK) {
+                            extend(this, res.data);
+                        } else {
+                            this.$message.error(res.msg);
+                        }
+                    })
+                    .catch((err) => {
+                        this.loading = false;
+                        this.$message.error(err.message);
+                    });
+            }
+```
+
+server端：
+
+```java
+@RequestMapping("/zhaopianxinxi_detail")
+    public String detail() {
+        _var = new LinkedHashMap(); // 重置数据
+        int id = Request.getInt("id");
+        Zhaopianxinxi map = service.find(id); // 根据前台url 参数中的id获取行数据
+        assign("map", map); // 把数据写到前台
+        return json(); // 将数据写给前端
+    }
+```
+
+### 照片管理功能
+
+页面运行效果如下：
+
+![1672295674429](image/README/1672295674429.png)
 
 client端：
 

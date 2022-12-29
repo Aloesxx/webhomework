@@ -2,7 +2,7 @@
     <div class="paper-login">
         <div class="loginpanelwrap">
             <div class="loginheader">
-                <div class="logintitle"><router-link to="/index">{{ setting.title }}</router-link></div>
+                <div class="logintitle"><router-link to="/index">图片浏览器</router-link></div>
             </div>
             <form action="javascript:;" :autocomplete="false">
                 <div class="loginform clearfix">
@@ -44,7 +44,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background: url("./bg.png") no-repeat center center;
+        // background: url("./bg.png") no-repeat center center;
+        background-color: #ffffff;
         background-size: cover;
         .loginpanelwrap {
             width: 540px;
